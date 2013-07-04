@@ -1,5 +1,5 @@
-#! @AWK_PATH@ -f
-# @configure_input@
+#! /usr/bin/gawk -f
+# checkmk/checkmk.  Generated from checkmk.in by configure.
 
 # checkmk - translate more concise versions of test suite specifications
 #           into C programs suitable for use with the Check unit test
@@ -13,7 +13,7 @@
 # Redistribution of this program in any form, with or without
 # modifications, is permitted, provided that the above copyright is
 # retained in distributions of this program in source form.
-# 
+#
 # (This is a free, non-copyleft license compatible with pretty much any
 # other free or proprietary license, including the GPL. It's essentially
 # a scaled-down version of the "modified" BSD license.)
@@ -69,7 +69,7 @@ BEGIN {
     pp_test_loop_signal_line = pp_test_loop_signal_line_prefix pp_name pp_ws_op "$";
     pp_main_pre_line = "^" pp_prefix pp_main_pre_tag pp_ws_op "$";
     pp_main_post_line = "^" pp_prefix pp_main_post_tag pp_ws_op "$";
-    
+
     # Global vars
     in_test = needs_line_decl = 0;
     cur_suite = cur_tcase = "Core";
@@ -451,7 +451,7 @@ function string_encode(raw)
     # interpolation, so the backslashes must be double-escaped. The
     # substitution string is supposed to result in an actual
     # double-backslash.
-    gsub("\\\\", "@AWK_GSUB_DBL_BSLASH@", raw);
+    gsub("\\\\", "\\\\", raw);
     gsub("\"", "\\\"", raw);
     return "\"" raw "\"";
 }
